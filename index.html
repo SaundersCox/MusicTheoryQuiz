@@ -7,21 +7,26 @@
 
 <body>
 
-<h1>Music Theory Quiz</h1>>
+<h1>Music Games</h1>>
 
 <form>
-    <h2><label h2 for="q" id="question">Enter a key:</label></h2>
-    <br>
-    <label for="q" id="answer"></label>
-    <br>
-    <input type="text" id="in" name="q">
-    <br>
-    <button type="button" for="q" onclick="scales()">Scales</button>
-    <button type="button" onclick="intervalQuestion()">Interval Quiz</button>
-    <button type="button" onclick="intervalCheck()">Interval Check</button>
     
-</form>>
+    <h2><label h2 for="q" id="question">The Interval Guessing Game!</label></h2>
+    <label for="q" id="answer"></label>
+    
+    <label for="q" id="check"></label>
+    <br>
 
+    <button type="button" onclick="intervalQuestion()">Play!</button>
+    <button type="button" onclick="intervalCheck()">Check</button>
+
+    <h3>Review your scales!</h3>
+    <label for="q" id="scales"></label>
+    <input type="text" id="in" placeholder="Enter key here!" name="q">
+    <button type="button" for="q" onclick="scales()">Show scales!</button>
+    <br>
+    
+</form>
 </body>
 
 </html>

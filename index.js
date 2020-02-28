@@ -87,6 +87,13 @@ const getRandMajor = () => {
 }
 
 /**
+ * Assigns a random key to static currMinor
+ */
+const getRandMinor = () => {
+    this.currMinor = minorKeys[rand(majorKeys.length)];
+}
+
+/**
  * Generate a random non-trivial interval for the user to guess corresponding to a given key
  */
 const getRandInterval = () => {
@@ -98,15 +105,17 @@ const getRandInterval = () => {
  * Invoke to the user an interval question
  */
 function intervalQuestion() {
-    const major = Math.floor(Math.random() * 2);
-    randInterval = getRandInterval();
+    document.getElementById("check").innerHTML = '';
+    this.isMajor = Math.floor(Math.random() * 2);
+    this.randInterval = getRandInterval();
 
-    if (major) {
+    if (this.isMajor) {
         getRandMajor();
-        document.getElementById("answer").innerHTML = 'What is ' + randInterval + ' above ' + this.currMajor + '?' + '<br>' ;
+        document.getElementById("answer").innerHTML = 'What is ' + randInterval + ' above ' + this.currMajor + ' major?';
     }
     else {
-        document.getElementById("answer").innerHTML = 'unimplemented';
+        getRandMinor();
+        document.getElementById("answer").innerHTML = 'What is ' + randInterval + ' above ' + this.currMinor + ' minor?';
     }
     
 
@@ -116,7 +125,8 @@ function intervalQuestion() {
  * Check if the user input a correct answwer
  */
 function intervalCheck() {
-
+    document.getElementById("check").innerHTML = getMajorScale(currMajor)[(this.randInterval-1)%7];
+    // document.getElementById("check").innerHTML = this.randInterval%8;
 }
 
 /**
@@ -125,7 +135,7 @@ function intervalCheck() {
 function scales() {
     enteredKey = document.getElementById("in").value;
 
-    document.getElementById("answer").innerHTML = 
+    document.getElementById("scales").innerHTML = 
         'Major: ' + getMajorScale(enteredKey) + '<br>' + 
         'Minor: ' + getMinorScale(enteredKey) + '<br>'
         ;
